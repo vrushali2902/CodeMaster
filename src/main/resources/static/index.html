@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMaster Engine - Enterprise Dashboard</title>
+    <link rel="stylesheet" href="styles.css?v=1.1">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="notification-container"></div>
+
+    <div class="container">
+        <header>
+            <div class="brand-group">
+                <div class="logo">CM</div>
+                <div>
+                    <h1>CodeMaster Engine</h1>
+                    <p class="subtitle">Welcome back, <span id="user-display">User</span></p>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button class="btn btn-outline" onclick="logout()">
+                    <span>Logout</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Sidebar: Snippets List -->
+            <section class="card sidebar">
+                <div class="card-header">
+                    <h2>Snippets</h2>
+                    <button class="btn btn-add" onclick="newSnippet()" title="New Snippet">+</button>
+                </div>
+                <div id="snippet-list" class="scroll-area">
+                    <!-- Snippets populated via app.js -->
+                </div>
+            </section>
+
+            <!-- Editor Area -->
+            <section class="card editor-section">
+                <div class="editor-toolbar">
+                    <div class="input-wrapper">
+                        <input type="text" id="snippet-title" class="form-control" placeholder="Untitled Snippet">
+                    </div>
+                    <div class="action-group">
+                        <button class="btn btn-primary" onclick="saveSnippet()">Save Changes</button>
+                        <button class="btn btn-outline" onclick="validateCode()">Validate Syntax</button>
+                        <button class="btn btn-danger" id="btn-delete-snippet" onclick="confirmDeleteSnippet()"
+                            style="display: none;">Delete Snippet</button>
+                    </div>
+                </div>
+                <div class="code-wrapper">
+                    <div class="line-numbers"></div>
+                    <textarea id="code-editor" spellcheck="false"
+                        placeholder="/* Start writing your enterprise Java code here... */"></textarea>
+                </div>
+            </section>
+
+            <!-- Version History -->
+            <section class="card history-sidebar">
+                <div class="card-header">
+                    <h2>History</h2>
+                </div>
+                <div id="version-list" class="scroll-area">
+                    <!-- Versions populated via app.js -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Custom Modal Structure -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">CodeMaster Engine</div>
+            <div class="modal-body" id="modal-content">Message goes here...</div>
+            <div class="modal-footer" id="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=1.1"></script>
+</body>
+
+</html>

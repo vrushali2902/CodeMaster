@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CodeMaster Engine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body
+    style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: radial-gradient(circle at top right, #1e293b, #0f172a);">
+    <div id="notification-container"></div>
+
+    <div class="card"
+        style="width: 100%; max-width: 420px; padding: 3rem; border-radius: 24px; border: 1px solid var(--border); background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px);">
+        <div class="brand-group" style="justify-content: center; margin-bottom: 3rem;">
+            <div class="logo">CM</div>
+            <h1 style="font-size: 2rem;">CodeMaster</h1>
+        </div>
+
+        <div id="login-form">
+            <h2 style="margin-bottom: 2rem; text-align: center;">Sign In</h2>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="name@company.com">
+                <div id="email-error" class="error-text"></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 2rem;">
+                <label class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="••••••••">
+                <div id="password-error" class="error-text"></div>
+            </div>
+            <button id="login-btn" class="btn btn-primary" style="width: 100%; height: 50px; justify-content: center;"
+                onclick="login()">Sign In</button>
+        </div>
+
+        <div id="register-form" style="display: none;">
+            <h2 style="margin-bottom: 2rem; text-align: center;">Create Account</h2>
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="reg-name" class="form-control" placeholder="John Doe">
+                <div id="reg-name-error" class="error-text"></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="reg-email" class="form-control" placeholder="john@company.com">
+                <div id="reg-email-error" class="error-text"></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label">Username</label>
+                <input type="text" id="reg-username" class="form-control" placeholder="johndoe123">
+                <div id="reg-username-error" class="error-text"></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label">Password</label>
+                <input type="password" id="reg-password" class="form-control" placeholder="Min. 8 characters">
+                <div id="reg-password-error" class="error-text"></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label">Access Tier</label>
+                <select id="reg-role" class="form-control">
+                    <option value="DEVELOPER">Developer Access</option>
+                    <option value="ADMIN">Administrator Access</option>
+                </select>
+            </div>
+            <button id="register-btn" class="btn btn-primary"
+                style="width: 100%; height: 50px; justify-content: center;" onclick="register()" disabled>Create
+                Account</button>
+        </div>
+
+        <p id="toggle-text" style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">
+            Don't have an account? <a href="#" onclick="toggleMode()"
+                style="color: var(--primary); font-weight: 700; text-decoration: none;">Register Now</a>
+        </p>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        let isLogin = true;
+        function toggleMode() {
+            isLogin = !isLogin;
+            document.getElementById('login-form').style.display = isLogin ? 'block' : 'none';
+            document.getElementById('register-form').style.display = isLogin ? 'none' : 'block';
+            document.querySelector('#login-form').parentElement.querySelector('h1').innerText = isLogin ? 'CodeMaster' : 'Register';
+            document.getElementById('toggle-text').innerHTML = isLogin ?
+                "Don't have an account? <a href='#' onclick='toggleMode()' style='color: var(--primary); font-weight: 700; text-decoration: none;'>Register Now</a>" :
+                "Already have an account? <a href='#' onclick='toggleMode()' style='color: var(--primary); font-weight: 700; text-decoration: none;'>Sign In</a>";
+        }
+    </script>
+</body>
+
+</html>
